@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Asistencia y Bitácora de Rutas - Hospital El Pino</title>
+
+<!--
+  Esta página vive en GitHub Pages (no en Apps Script) por una sola razón:
+  Apps Script sirve TODO el contenido de la app (incluyendo su <head>) adentro
+  de un iframe interno obligatorio (así funciona el modo "sandbox" de
+  HtmlService, no hay forma de desactivarlo desde el código). Eso significa
+  que un <link rel="manifest"> puesto en el Index.html de la app NUNCA llega
+  al documento de nivel superior que Chrome revisa para decidir si algo es
+  instalable como PWA - por eso los intentos anteriores (data URI, manifest
+  servido por el propio Apps Script) fallaron igual, aunque el manifest en
+  sí estaba bien armado.
+
+  La solución: esta página SÍ es el documento de nivel superior real, con su
+  propio <link rel="manifest">, y adentro carga la app completa de Apps
+  Script en un iframe a pantalla completa. Así Chrome ve un manifest válido
+  en el documento correcto y puede instalarla en modo standalone (sin barra
+  de navegador).
+
+  El acceso directo / instalación en Android debe hacerse visitando ESTA URL
+  (https://bastian-front.github.io/vannet-pwa/), no la URL de script.google.com
+  directamente - esa URL "de adentro" sigue funcionando en el navegador
+  normal, pero nunca va a ser instalable por la razón de arriba.
+
+  Si algún día cambia la URL de la implementación de Apps Script (porque se
+  crea una implementación nueva en vez de una versión nueva de la
+  existente), hay que actualizar el src del iframe acá abajo.
+-->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="icon-192.png">
+<meta name="theme-color" content="#0a2540">
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #0a2540;
+    overflow: hidden;
+  }
+  #app-frame {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    border: 0;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-sizing: border-box;
+    background: #0a2540;
+  }
+  #fallback {
+    display: none;
+    position: fixed;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+    background: #0a2540;
+    color: #ffffff;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    text-align: center;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+  #fallback a {
+    color: #ffffff;
+    background: #1f5fa8;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<iframe
+  id="app-frame"
+  src="https://script.google.com/macros/s/AKfycbw5Qn4F8mfLADuGSrdI9LRZfwQk_q7zN21_RZm2Wk5ctEcEPxJQb-lig9Dz7uu_DVrv/exec"
+  title="Asistencia y Bitácora de Rutas - Hospital El Pino"
+  allow="geolocation; camera; microphone"
+  allowfullscreen
+></iframe>
+
+<div id="fallback">
+  <p>La app no cargó dentro de esta página.<br>Ábrela directamente en el navegador:</p>
+  <a href="https://script.google.com/macros/s/AKfycbw5Qn4F8mfLADuGSrdI9LRZfwQk_q7zN21_RZm2Wk5ctEcEPxJQb-lig9Dz7uu_DVrv/exec" target="_top">Abrir la app</a>
+</div>
+
+<script>
+  // Si el iframe no logra cargar (por ejemplo, cookies de terceros bloqueadas
+  // en algún navegador), mostramos un botón para abrir la app directamente
+  // en la pestaña, en vez de dejar la pantalla en blanco.
+  (function () {
+    var frame = document.getElementById('app-frame');
+    var fallback = document.getElementById('fallback');
+    var loaded = false;
+
+    frame.addEventListener('load', function () {
+      loaded = true;
+    });
+
+    setTimeout(function () {
+      if (!loaded) {
+        frame.style.display = 'none';
+        fallback.style.display = 'flex';
+      }
+    }, 8000);
+  })();
+</script>
+
+</body>
+</html>
