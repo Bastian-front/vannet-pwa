@@ -1,8 +1,8 @@
 {
   "name": "Asistencia y Bitácora de Rutas - Hospital El Pino",
   "short_name": "Vannet App",
-  "start_url": "https://script.google.com/macros/s/AKfycbw5Qn4F8mfLADuGSrdI9LRZfwQk_q7zN21_RZm2Wk5ctEcEPxJQb-lig9Dz7uu_DVrv/exec",
-  "scope": "https://script.google.com/macros/s/AKfycbw5Qn4F8mfLADuGSrdI9LRZfwQk_q7zN21_RZm2Wk5ctEcEPxJQb-lig9Dz7uu_DVrv/exec",
+  "start_url": "https://bastian-front.github.io/vannet-pwa/",
+  "scope": "https://bastian-front.github.io/vannet-pwa/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#0a2540",
