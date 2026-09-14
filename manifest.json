@@ -1,0 +1,14 @@
+{
+  "name": "Asistencia y Bitácora de Rutas - Hospital El Pino",
+  "short_name": "Vannet App",
+  "start_url": "https://script.google.com/macros/s/AKfycbw5Qn4F8mfLADuGSrdI9LRZfwQk_q7zN21_RZm2Wk5ctEcEPxJQb-lig9Dz7uu_DVrv/exec",
+  "scope": "https://script.google.com/macros/s/AKfycbw5Qn4F8mfLADuGSrdI9LRZfwQk_q7zN21_RZm2Wk5ctEcEPxJQb-lig9Dz7uu_DVrv/exec",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0a2540",
+  "theme_color": "#0a2540",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
